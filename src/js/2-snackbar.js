@@ -13,23 +13,23 @@ form.addEventListener('submit', (e) => {
     const promise = new Promise((res, rej) => {
         setTimeout(() => {
             if (selectedRadio.value === "fulfilled") {
-                res(`✅ Fulfilled promise in ${delay}ms`)
+                res(delay)
             } else {
-                rej(`❌ Rejected promise in ${delay}ms`);
+                rej(delay);
             }
         }, delay)
     });
     promise
-        .then(() => {
+        .then((resdelay) => {
             iziToast.success({
                 title: 'OK',
-                message: `✅ Fulfilled promise in ${delay}ms`,
+                message: `✅ Fulfilled promise in ${resdelay}ms`,
             });;
         })
-        .catch(() => {
+        .catch((resdelay) => {
             iziToast.error({
                 title: 'Error',
-                message: `❌ Rejected promise in ${delay}ms`,
+                message: `❌ Rejected promise in ${resdelay}ms`,
             });;
         })
 });
